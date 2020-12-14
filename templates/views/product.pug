@@ -1,0 +1,10 @@
+extends ../layouts/default
+
+block content
+    .container
+            h1= product.name
+            h2='$' +product.price
+            h3=product.description
+            <button data-action='btn' class='btn btn-primary' onClick="add_to_cart('#{product_id}','#{product.price}')">Add To Cart</button>
+block js
+        script(src="/js/cart.js")

@@ -1,0 +1,6 @@
+mixin product(product)
+   
+    li
+        h3:a(href='product' +product.id)=product.name
+        h4='$'+product.price
+        hr

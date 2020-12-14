@@ -1,0 +1,34 @@
+extends ../layouts/default
+include ../mixins/product
+
+block content
+    .container
+        h1 My cart
+
+        .blog
+            each post in products
+                ul
+                    +product(post)
+        if user
+            a(class='btn btn-primary', href='/purchase') purchase
+        else
+            form.signup-form(method="post" action="signup").row.col-sm-0.col-md-6
+                input(type='hidden', name='action', value='signup')
+
+                .form-group
+                    label Name
+                        .row
+                            .col-sm-6.col-md-6
+                                input.form-control.input-box(type="text", name="first", placeholder='First Name')
+                            .col-sm-6.col-md-6
+                                input.form-control.input-box(type="text", name="last", placeholder='Last Name')
+                .form-group
+                    label Email
+                    input.form-control.input-box(type="email", name="email", placeholder='Email')
+                .form-group
+                    label Password
+                    .row
+                    .col-sm-6.col-md-6
+                    input.form-control.input-box(type="password", name="password", placeholder='Password')
+
+                button(type='submit').btn.btn-success Purchase

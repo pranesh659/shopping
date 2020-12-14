@@ -1,0 +1,37 @@
+extends ../layouts/default
+include ../mixins/product
+
+block content
+    .container
+        h1 products list
+        if products.results.length
+            if products.totalPages > 1
+                .lead.text-muted Showing
+                    strong #{ products.first}
+                    | to
+                    strong #{ products.last}
+                    | of
+                    strong #{ products.total}
+                    | products
+            else
+                .lead.text-muted Showing #{ utils.plural(products.results.length, '* post')}
+            .blog
+                each post in products.results
+                    ul 
+                        +product( post )                   
+            if products.totalPages > 1
+                ul.pagination
+                    if products.previous
+                        li: a(href='?page' + products.previous): span.glyphicon.glyphicon-chevron-left
+                    else
+                        li.disabled: a(href='?page' + 1 ): span.glyphicon.glyphicon-chevron-left
+                    each p, i in products.pages
+                        li(class=products.currentPage === p ? 'active' : null)
+                            a(href='?page' + (p === "---" ? (i ? products.totalPages : 1) : p ))= p
+                    if products.next
+                        li: a(href='?page' + products.next): span.glyphicon.glyphicon-chevron-right
+                    else
+                        li.enabled: a(href='?page' + products.totalPages): span.glyphicon.glyphicon-chevron-right
+            else
+                .jumbotron.text-center
+                    h3(style="margin-bottom:0;margin-top:0;") there are no products at.
