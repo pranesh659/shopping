@@ -21,9 +21,9 @@ exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = [
 		{ label: 'Home', key: 'home', href: '/' },
 		{ label: 'Products', key: 'product', href: '/products' },
-		{ label: 'myorders', key: 'myorders', href: '/myorders' }
+		//{ label: 'myorders', key: 'myorders', href: '/myorders' }
 	];
-	//if(req.User)locals.navLinks.push({ label: 'myorders', key: 'myorders', href: '/myorders' });
+	if(req.User)locals.navLinks.push({ label: 'myorders', key: 'myorders', href: '/myorders' });
 	if(req.session.cart=undefined)req.session.cart=[];
 	res.locals.eachincount=0;
 	//req.session.cart.forEach(function(product) {
