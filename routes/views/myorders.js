@@ -1,5 +1,5 @@
 var keystone = require('keystone');
-var User=keystone.list('User');
+//var User=keystone.list('User');
 var order=keystone.list('order');
 
 exports = module.exports = function (req, res) {
@@ -16,7 +16,7 @@ exports = module.exports = function (req, res) {
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
     locals.section = 'myorders';
-    locals.title="myorders";
+    locals.title='myorders';
 
     view.on('init',function(next){
         order.paginate({
@@ -24,7 +24,7 @@ exports = module.exports = function (req, res) {
             perPage:2,
             maxPage:10,
         })
-       // .where('customer', req.User.id)
+        //.where('customer', req.User.id)
         .sort('-publishedDate')
         .exec(function(err,res){
             locals.orders=res;

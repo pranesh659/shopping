@@ -22,16 +22,16 @@ block content
             if orders.totalPages > 1
                 ul.pagination
                     if orders.previous
-                        li: a(href='?page' + orders.previous): span.glyphicon.glyphicon-chevron-left
+                        li: a(href='?page=' + orders.previous): span.glyphicon.glyphicon-chevron-left
                     else
-                        li.disabled: #{href='?page*' + 1}: span.glyphicon.glyphicon-chevron-left
+                        li.disabled: #{href='?page=' + 1}: span.glyphicon.glyphicon-chevron-left
                     each p, i in orders.pages
                         li(class=orders.currentPage === p ? 'active' : null)
-                            a(href='?page*' + (p === '---' ? (i ? orders.totalPages : 1) : p))= p
+                            a(href='?page=' + (p === '---' ? (i ? orders.totalPages : 1) : p))= p
                     if orders.next
-                        li: a(href='?page*' + orders.next): span.glyphicon.glyphicon-chevron-right
+                        li: a(href='?page=' + orders.next): span.glyphicon.glyphicon-chevron-right
                     else
-                        li.disabled: a(href='?page*' + orders.totalPages): span.glyphicon.glyphicon-chevron-right
+                        li.disabled: a(href='?page=' + orders.totalPages): span.glyphicon.glyphicon-chevron-right
             else
                 if category
                     .jumbotron.text-center
