@@ -4,15 +4,14 @@ include ../mixins/product
 block content
     .container
         h1 My cart
-
         .blog
             each post in products
                 ul
-                    +product(post)
+                    +product( post )
         if user
             a(class='btn btn-primary', href='/purchase') purchase
         else
-            form.signup-form(method="post" action="signup").row.col-sm-0.col-md-6
+            form.signup-form(method="Post" action="signup").row.col-sm-0.col-md-6
                 input(type='hidden', name='action', value='signup')
 
                 .form-group

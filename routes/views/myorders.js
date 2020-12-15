@@ -9,7 +9,7 @@ exports = module.exports = function (req, res) {
         view.render("error/404");
         return;
     }
-    console.log("login user:"+req.User.email);
+    //console.log("login user:"+req.User.email);
 
 	var locals = res.locals;
 
@@ -24,7 +24,7 @@ exports = module.exports = function (req, res) {
             perPage:2,
             maxPage:10,
         })
-        .where('customer', req.User.id)
+       // .where('customer', req.User.id)
         .sort('-publishedDate')
         .exec(function(err,res){
             locals.orders=res;
